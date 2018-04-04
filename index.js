@@ -9,7 +9,7 @@ function session(opts, emitter) {
     opts = _.defaultsDeep(opts, {debug: _.noop, consul: {ttl: 15, lockDelay: 10, readWait: 180}});
     opts.debug("Using options", opts);
     var client = consul(
-      {host: opts.consul.host, port: opts.consul.port, defaults: {token: opts.consul.token}});
+      {host: opts.consul.host, port: opts.consul.port, secure: opts.consul.secure, defaults: {token: opts.consul.token}});
     var isLeader = false;
     var sessionId, renewTimer, waitIndex, resetTimer;
 
