@@ -6,7 +6,7 @@ var _ = require("lodash");
 
 function session(opts, emitter) {
     emitter = emitter || new EventEmitter();
-    opts = _.defaultsDeep(opts, {debug: _.noop, consul: {ttl: 15, lockDelay: 10, readWait: 180}});
+    opts = _.defaultsDeep(opts, {debug: _.noop, consul: {ttl: 15, lockDelay: 10, readWait: 180, secure: false}});
     opts.debug("Using options", opts);
     var client = consul(
       {host: opts.consul.host, port: opts.consul.port, secure: opts.consul.secure, defaults: {token: opts.consul.token}});
